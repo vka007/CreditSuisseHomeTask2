@@ -23,12 +23,15 @@ public class BankHome {
         //Find Suspicious Accounts
         String suspiciousAccount[][] = checkActivity.flagAccount(customerData);
 
-        //Find Suspicious Transaction
+        //Find Suspicious Transactions
         String suspiciousTransaction[] =  checkActivity.flagTransaction(transactionData, suspiciousAccount);
 
         GenerateReport generateReport = new GenerateReport();
 
+        //Generate & Print the Suspicious Transactions
         generateReport.suspiciousTransactionReport(suspiciousTransaction, transactionData);
+
+        //Generate & Print the Suspicious Accounts
         generateReport.suspiciousAccountReport(suspiciousAccount);
 
     }
