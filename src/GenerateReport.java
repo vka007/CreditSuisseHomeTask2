@@ -3,10 +3,6 @@ public class GenerateReport {
     //Generate Report for Suspicious Transaction
     public void suspiciousTransactionReport(String suspiciousTransaction[], String transactionData[][])
     {
-        //Check if any Suspicious transaction present
-        if (suspiciousTransaction[0] == null) {
-            System.out.println("No Suspicious Transaction!");
-        } else {
             //String array simulate a calendar
             String month[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
@@ -50,7 +46,7 @@ public class GenerateReport {
 
             //Generate Report
             for (int i = 0; i < 12; i++) {
-                //check if any Month has no suspicious transactions
+                //check if any Month has any suspicious transactions
                 if (groupByMonth[i][count] != null) {
                     System.out.println("For the Month of " + month[i]);
                     System.out.println("Suspicious Transactions :");
@@ -62,32 +58,24 @@ public class GenerateReport {
                 }
                 count = 1;
             }
-        }
     }
 
     //Generate Report for Suspicious Accounts
     public void suspiciousAccountReport(String[][] suspiciousAccount)
     {
-        int flag = 0;
-
-        //check if any suspicious account is present
-        if (suspiciousAccount[0][0] == null)
-            System.out.println("No Suspicious Accounts present!");
-        else {
             System.out.println("Suspicious Accounts");
-
+            int flag = 0;
             for (int i = 0; i < 100; i++) {
-                for (int j = 0; j < 2; j++) {
-                    if (suspiciousAccount[i][j] == null) {
+                for (int j = 0; j < 2; j+=2) {
+                    if (suspiciousAccount[i][j] != null) {
+                        System.out.print("["+suspiciousAccount[i][j]+ ","+suspiciousAccount[i][j+1]+"]");
+                        System.out.println();
                         flag = 1;
-                        break;
                     }
-                    System.out.print(suspiciousAccount[i][j]+ " ");
                 }
-                if (flag == 1)
-                    break;
-                System.out.println();
             }
-        }
+
+            if (flag==0)
+                System.out.println("None");
     }
 }

@@ -8,10 +8,10 @@ public class CheckActivity {
         String suspiciousAccount[][] = new String[100][100];
         int row = 0, col = 0, flag = 0;
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 100; i++) {
             for (int j = i + 1; j <= 5; j++) {
                 //condition to find same person with multiple account
-                if (customerData[i][2] == customerData[j][2] && customerData[i][3] == customerData[j][3]) {
+                if (customerData[i][2].equalsIgnoreCase(customerData[j][2]) && customerData[i][3] == customerData[j][3]) {
                     //check same account is not duplicated
                     if (flag == 0) {
                         suspiciousAccount[row][col] = customerData[i][0];
@@ -34,12 +34,6 @@ public class CheckActivity {
         String suspiciousTransaction[] = new String[100];
         int count = 0;
 
-        //check if suspicious accounts present
-        if(suspiciousAccount[0][0] == null)
-        {
-            System.out.println("No Suspicious Transaction Occured");
-        }
-        else {
             for (int i = 0; i < 2; i++) {
                 for (int j = 1; j < 100; j++) {
                     //same person to same person transaction condition 1
@@ -55,7 +49,7 @@ public class CheckActivity {
                         continue;
                 }
             }
-        }
+
         return suspiciousTransaction;
     }
 }
